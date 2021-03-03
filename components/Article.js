@@ -101,4 +101,50 @@ const data = [
     Refresh the page to see the new article.
   */
   
+ function articleMaker(title, date, content) {
+  const article = document.createElement("div");
+  const dataTitle = document.createElement("h2");
+  const articledate = document.createElement("p");
+  const artricleContent = document.createElement("p");
+  const expandButton = document.createElement("span");
+
+  article.appendChild(dataTitle);
+  article.appendChild(articledate);
+  article.appendChild(artricleContent);
+  article.appendChild(expandButton);
+
+  article.classList.add("article");
+  articledate.classList.add("articledate");
+  expandButton.classList.add("expandButton");
+
+  const expand = "\u25bc";
+  const span = "\u25b2";
+
+  expandButton.textContent = expand;
+  span.textContent = span;
+  artricleContent.textContent = content;
+
+  dataTitle.textContent = title;
+  articledate.textContent = date;
+
+  expandButton.addEventListener("click", (item) => {
+    console.log("expand clicked", item.target);
+
+    expand.classList.toggle("expandbutton");
+    span.classList.toggle("span");
+
+    dataContent.ClassList.toggle("toggle-on");
+  });
+
+  return article;
+}
+
+const article = document.querySelector(".article");
+
+data.map(data => {
+  console.log("build data", data.title);
+  article.appendChild(createData(data.title, data.content));
+});
+
+console.log(articleMaker("test", "today", "here is content"));
 
